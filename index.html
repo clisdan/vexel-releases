@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vexel: fair court rotation for open play</title>
+<meta name="description" content="Vexel rotates players onto courts so everyone gets equal games, fair waits and balanced teams. For pickleball, badminton, padel, tennis and any singles or doubles court sport. Windows, works fully offline.">
+<meta property="og:title" content="Vexel: fair court rotation for open play">
+<meta property="og:description" content="Equal games, fair waits and balanced teams for open play and club nights. Windows, fully offline.">
+<meta property="og:image" content="img/board.webp">
+<link rel="icon" href="img/icon.png">
+<style>
+  :root {
+    --bg: #ffffff; --soft: #f5f7f6; --line: #e4e8e6; --ink: #101814; --muted: #5b6661;
+    --green: #12b76a; --green-dark: #0b8a4f; --green-soft: #e8f8ef; --radius: 14px;
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink); background: var(--bg);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--green-dark); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); text-decoration: none; }
+  .brand img { width: 30px; height: 30px; border-radius: 8px; }
+  nav.links { margin-left: auto; display: flex; gap: 22px; align-items: center; }
+  nav.links a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav.links a:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid transparent; cursor: pointer; }
+  .btn.primary { background: var(--green); color: #fff; }
+  .btn.primary:hover { background: var(--green-dark); }
+  .btn.ghost { border-color: var(--line); color: var(--ink); background: #fff; }
+  .btn.ghost:hover { border-color: #c9d1cd; }
+  .btn.small { padding: 8px 14px; font-size: 14px; }
+  nav.links .btn.primary { color: #fff; }
+
+  .hero { padding: 72px 0 40px; text-align: center; background: linear-gradient(180deg, var(--green-soft) 0%, #fff 70%); }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green-dark); background: #fff; border: 1px solid #cdeedd; padding: 5px 12px; border-radius: 999px; }
+  h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.08; letter-spacing: -.02em; margin: 18px auto 16px; max-width: 860px; }
+  .lead { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 auto 28px; }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 14px; }
+  .shot { margin: 48px auto 0; max-width: 1040px; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px -24px rgba(16,24,20,.28); overflow: hidden; background: #fff; }
+  .shot img { display: block; width: 100%; height: auto; }
+
+  section { padding: 80px 0; }
+  section.alt { background: var(--soft); }
+  h2 { font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -.015em; line-height: 1.15; margin: 0 0 12px; }
+  .sub { color: var(--muted); font-size: 18px; max-width: 720px; margin: 0 0 40px; }
+  .center { text-align: center; } .center .sub { margin-left: auto; margin-right: auto; }
+
+  .problem { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .problem div { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; color: var(--muted); }
+  .problem b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
+
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .card .ic { width: 42px; height: 42px; border-radius: 10px; background: var(--green-soft); color: var(--green-dark); display: grid; place-items: center; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+  .gallery { display: grid; gap: 56px; }
+  .row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: center; }
+  .row.flip { grid-template-columns: 1fr 1.6fr; }
+  .media.narrow { max-width: 420px; justify-self: center; }
+  .row.flip .media { order: 2; }
+  .media { border-radius: 14px; border: 1px solid var(--line); overflow: hidden; box-shadow: 0 18px 40px -22px rgba(16,24,20,.25); background: #fff; }
+  .media img { display: block; width: 100%; height: auto; }
+  .row h3 { font-size: 24px; margin: 0 0 10px; letter-spacing: -.01em; }
+  .row p { color: var(--muted); margin: 0 0 10px; font-size: 16.5px; }
+  .row ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .row li { margin: 4px 0; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
+  .step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+  .step::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 700; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--muted); }
+
+  .get { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: stretch; }
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .panel h3 { margin: 0 0 10px; font-size: 20px; }
+  .panel ol { margin: 0 0 18px; padding-left: 20px; color: var(--muted); }
+  .panel li { margin: 8px 0; }
+  .panel code { background: var(--soft); border: 1px solid var(--line); padding: 1px 6px; border-radius: 6px; font-size: 14px; color: var(--ink); }
+  .contact { display: flex; flex-direction: column; gap: 10px; }
+  .contact .btn { justify-content: center; }
+  .req { font-size: 14px; color: var(--muted); margin-top: 16px; }
+  .sports { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px; }
+  .sports span { font-size: 14px; background: #fff; border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+
+  @media (max-width: 860px) {
+    nav.links a:not(.btn) { display: none; }
+    .problem, .features, .steps, .get { grid-template-columns: 1fr; }
+    .row, .row.flip { grid-template-columns: 1fr; gap: 20px; }
+    .row.flip .media { order: 0; }
+    section { padding: 60px 0; }
+    .hero { padding-top: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.png" alt="">Vexel</a>
+    <nav class="links">
+      <a href="#features">Features</a>
+      <a href="#look">See it</a>
+      <a href="#get">Get Vexel</a>
+      <a class="btn primary small" href="https://github.com/clisdan/vexel-releases/releases/latest">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">For open play, club nights and casual tournaments</span>
+      <h1>Fair court rotation, without the arguments.</h1>
+      <p class="lead">Vexel decides who plays next so everyone gets equal games, fair waits and balanced teams, even when people arrive late, leave early or take a break.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/clisdan/vexel-releases/releases/latest">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn ghost" href="#look">See how it looks</a>
+      </div>
+      <p class="note">7-day free trial · Windows 10 and 11 · works fully offline</p>
+      <div class="shot"><img src="img/board.webp" width="1600" height="1000" alt="Vexel live board: three courts in play with balanced teams and an Up next list"></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2>Open play is fun. Running it isn't.</h2>
+      <p class="sub">Paper lists and paddle stacks work until the gym gets busy.</p>
+      <div class="problem">
+        <div><b>"Who's next?"</b>Someone has to keep track, and the host ends up refereeing the queue instead of playing.</div>
+        <div><b>Uneven games</b>Regulars quietly get more games, newcomers wait longer, and late arrivals throw the list off.</div>
+        <div><b>Lopsided matches</b>Strong players stack teams, and the same partners keep ending up together.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Everything a host needs, nothing they don't</h2>
+      <p class="sub">Vexel handles the rotation; you just tap who won.</p>
+      <div class="features">
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16"/></svg></div>
+          <h3>Equal games for everyone</h3>
+          <p>Whoever is furthest behind their fair share plays next. Late arrivals get their share for the time they're there, and nobody sits out twice in a row when it can be avoided.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l-3 6h6zM19 8l-3 6h6zM5 8h14"/></svg></div>
+          <h3>Balanced teams</h3>
+          <p>Skill levels A to E keep matches close. Don't know someone's level? Vexel learns it from who wins.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><path d="M11 8h5a2 2 0 0 1 2 2v3M13 16H8a2 2 0 0 1-2-2v-3"/></svg></div>
+          <h3>New partners, every game</h3>
+          <p>Vexel avoids putting the same teammates together again whenever it can, so everyone mixes.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg></div>
+          <h3>Singles, doubles, any format</h3>
+          <p>Timed games or play to a score. Doubles, singles or both, with singles offered automatically when a few players would otherwise wait.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>TV display for players</h3>
+          <p>Plug in a TV or projector: everyone sees the courts, who's next and the time left, without crowding the host.</p>
+        </div>
+        <div class="card">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h3>Works offline, never loses a session</h3>
+          <p>No internet or account needed. Everything is saved as you go, every action can be undone, and you can export a spreadsheet to finish on paper anytime.</p>
+        </div>
+      </div>
+      <div class="sports">
+        <span>Pickleball</span><span>Badminton</span><span>Padel</span><span>Tennis</span><span>Any singles or doubles court sport</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="look" class="alt">
+    <div class="wrap">
+      <h2>See it in action</h2>
+      <p class="sub">Real screens from the app.</p>
+      <div class="gallery">
+        <div class="row">
+          <div class="media"><img loading="lazy" src="img/proposal.webp" width="1600" height="1000" alt="Proposed games with team strengths and the waiting list"></div>
+          <div>
+            <h3>Check the next round, then start</h3>
+            <p>Vexel proposes the next games. You can swap players, switch a court to singles or lock a match before it starts.</p>
+            <ul><li>Team strength shown as numbers ("7.8 vs 7.0")</li><li>Re-generate with one click</li></ul>
+          </div>
+        </div>
+        <div class="row flip">
+          <div class="media narrow"><img loading="lazy" src="img/upnext.webp" width="816" height="892" alt="Up next panel with games played, games sat out and games behind"></div>
+          <div>
+            <h3>Everyone can see why they're next</h3>
+            <p>The Up next list shows games played, games sat out and how far behind each player is. The order is clearly fair, so nobody has to argue about it.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="media"><img loading="lazy" src="img/tv.webp" width="1600" height="900" alt="TV display showing courts, teams and the Up next list"></div>
+          <div>
+            <h3>A TV screen for the whole gym</h3>
+            <p>Large, readable from across the hall: courts, teams, time left and who's up next.</p>
+          </div>
+        </div>
+        <div class="row flip">
+          <div class="media"><img loading="lazy" src="img/players.webp" width="1600" height="1000" alt="Players list with skill levels A to E"></div>
+          <div>
+            <h3>Check-in and skill levels in seconds</h3>
+            <p>Add players, paste a whole list, set skill levels from A (strongest) to E (beginner), pause someone for a break or mark them as left.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap center">
+      <h2>Up and running in a minute</h2>
+      <p class="sub">No accounts, no setup calls, no internet needed.</p>
+      <div class="steps" style="text-align:left">
+        <div class="step"><h3>Install</h3><p>Run the installer. No admin rights and no internet needed, and you can copy it to a USB stick.</p></div>
+        <div class="step"><h3>Set up the session</h3><p>Pick the sport, the number of courts and the time. Add or check in your players.</p></div>
+        <div class="step"><h3>Press start</h3><p>Vexel fills the courts. When a game ends, tap who won and the next game is ready.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="get" class="alt">
+    <div class="wrap">
+      <h2>Get Vexel</h2>
+      <p class="sub">Try it free for 7 days, then get a license key from us.</p>
+      <div class="get">
+        <div class="panel">
+          <h3>How it works</h3>
+          <ol>
+            <li>Download <code>Vexel_…_x64-offline-setup.exe</code> from the download page and install it.</li>
+            <li>Use every feature free for 7 days.</li>
+            <li>To keep using Vexel, open <b>Settings → License</b>, copy your <b>Machine Code</b> (looks like <code>VX-4F7Q-91KD</code>) and send it to us.</li>
+            <li>We reply with your license key. Paste it in, and you're done for good.</li>
+          </ol>
+          <a class="btn primary" href="https://github.com/clisdan/vexel-releases/releases/latest">Go to downloads</a>
+          <p class="req">Windows 10 or 11 (64-bit). Updates install automatically when you're online. If Windows shows "Windows protected your PC", click <b>More info → Run anyway</b>.</p>
+        </div>
+        <div class="panel">
+          <h3>Get your license key</h3>
+          <p style="color:var(--muted);margin:0 0 18px">Message us with your Machine Code, and we'll send your key.</p>
+          <div class="contact">
+            <a class="btn primary" href="https://wa.me/971543389168?text=Hi%2C%20I%27d%20like%20a%20Vexel%20license.%20My%20Machine%20Code%20is%3A%20">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+              Chat on WhatsApp
+            </a>
+            <a class="btn ghost" href="mailto:cabrenica12@gmail.com?subject=Vexel%20license&amp;body=Hi%2C%20I%27d%20like%20a%20Vexel%20license.%0A%0AMy%20Machine%20Code%20is%3A%20">Email us</a>
+          </div>
+          <p class="req">WhatsApp: +971 54 338 9168<br>Email: cabrenica12@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Vexel</span>
+    <span><a href="https://github.com/clisdan/vexel-releases/releases/latest">Download</a> · <a href="#features">Features</a> · <a href="#get">License</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
