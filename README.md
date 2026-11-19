@@ -14,6 +14,7 @@
   <a href="https://clisdan.github.io/vexel-releases/"><img src="https://img.shields.io/badge/Website-visit-0969da?style=for-the-badge" alt="Website"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-555?style=for-the-badge" alt="Windows 10 and 11">
   <img src="https://img.shields.io/badge/Works-offline-555?style=for-the-badge" alt="Works offline">
+  <img src="https://img.shields.io/badge/Free-beta-b54708?style=for-the-badge" alt="Free beta">
 </p>
 
 <p align="center">
