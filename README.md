@@ -77,10 +77,10 @@ Vexel decides who plays next, so everyone gets **equal games, fair waits and bal
 
 1. **Download** `Vexel_<version>_x64-offline-setup.exe` from the [latest release](https://github.com/clisdan/vexel-releases/releases/latest).
 2. **Install.** No admin rights and no internet needed. You can copy the installer to a USB stick.
-3. **Try it** at your next session, with every feature included.
-4. **Get your license key.** Open **Settings → License**, copy your Machine Code (looks like `VX-4F7Q-91KD`) and send it to us. We reply with your key.
+3. **Run it** at your next session.
 
 > If Windows shows "Windows protected your PC", click **More info → Run anyway**.
+
 ---
 
 <sub>This repository hosts the Vexel website, installers and update files. Requires Windows 10 or 11 (64-bit). © 2026 Vexel</sub>
