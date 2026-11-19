@@ -43,6 +43,7 @@ Vexel decides who plays next, so everyone gets **equal games, fair waits and bal
 - **Any format.** Play to a score or timed games. Doubles, singles or both, with singles offered automatically when a few players would otherwise wait.
 - **Late arrivals and early leavers.** Late players wait in line for their fair share; people who leave or take a break don't break the rotation.
 - **TV display.** Plug in a TV or projector so everyone sees the courts, who's next and the time left.
+- **DUPR-ready (pickleball).** Add DUPR IDs once and export a file for DUPR's club upload, with every scored game.
 - **Never loses a session.** Saved as you go, every action can be undone, and you can export a spreadsheet to finish on paper anytime.
 - **No internet, no account.** Works fully offline. Updates install automatically when you're online.
 
