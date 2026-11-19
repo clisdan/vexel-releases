@@ -72,6 +72,14 @@
   .row ul { margin: 0; padding-left: 20px; color: var(--muted); }
   .row li { margin: 4px 0; }
 
+  .options { margin-top: 72px; }
+  .options h3 { font-size: 26px; margin: 0 0 8px; letter-spacing: -.01em; }
+  .options .sub { margin-bottom: 28px; }
+  .opt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px 32px; align-items: start; max-width: 960px; }
+  .opt-grid figure { margin: 0; }
+  .opt-grid .media.tall { max-width: 340px; }
+  .opt-grid figcaption { margin-top: 12px; color: var(--muted); font-size: 15px; }
+  .opt-grid figcaption b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 2px; }
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
   .step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
   .step::before { counter-increment: s; content: counter(s); display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; font-weight: 700; margin-bottom: 12px; }
@@ -97,6 +105,7 @@
     nav.links a:not(.btn) { display: none; }
     .problem, .features, .steps, .get { grid-template-columns: 1fr; }
     .row, .row.flip { grid-template-columns: 1fr; gap: 20px; }
+    .opt-grid { grid-template-columns: 1fr; }
     .row.flip .media { order: 0; }
     section { padding: 60px 0; }
     .hero { padding-top: 48px; }
@@ -222,6 +231,29 @@
             <h3>Check-in and skill levels in seconds</h3>
             <p>Add players, paste a whole list, set skill levels from A (strongest) to E (beginner), pause someone for a break or mark them as left.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="options">
+        <h3>Tap any player for more options</h3>
+        <p class="sub">Injury, early exit or a quick break: handle it in a couple of taps, even in the middle of a game.</p>
+        <div class="opt-grid">
+          <figure>
+            <div class="media"><img loading="lazy" src="img/menu.webp" width="860" height="720" alt="Menu on a player: Substitute, Leave now, Pause now, Player details"></div>
+            <figcaption><b>Player menu</b>Tap a name on a court: substitute, leave now, pause now or see details.</figcaption>
+          </figure>
+          <figure>
+            <div class="media"><img loading="lazy" src="img/substitute.webp" width="900" height="931" alt="Substitute dialog with the next player in line suggested"></div>
+            <figcaption><b>Substitute mid-game</b>Vexel suggests who's next in line, or you pick anyone. The player coming off goes back to waiting, or leaves or takes a break.</figcaption>
+          </figure>
+          <figure>
+            <div class="media"><img loading="lazy" src="img/leave.webp" width="900" height="776" alt="Leaving now dialog: bring in a substitute, play on short-handed, or cancel the game"></div>
+            <figcaption><b>Someone has to leave?</b>Bring in a substitute, play on short-handed or cancel the game. It counts for whoever plays more than half of it.</figcaption>
+          </figure>
+          <figure>
+            <div class="media tall"><img loading="lazy" src="img/drawer.webp" width="537" height="1100" alt="Player details: games, sat out, wins and losses, level and actions"></div>
+            <figcaption><b>Player details</b>Games played, time sat out, wins and losses, skill level, and "Why is this player here in the line?"</figcaption>
+          </figure>
         </div>
       </div>
     </div>
