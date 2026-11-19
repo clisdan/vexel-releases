@@ -81,12 +81,6 @@ Vexel decides who plays next, so everyone gets **equal games, fair waits and bal
 4. **Get your license key.** Open **Settings → License**, copy your Machine Code (looks like `VX-4F7Q-91KD`) and send it to us. We reply with your key.
 
 > If Windows shows "Windows protected your PC", click **More info → Run anyway**.
-
-## Get your license key
-
-- **WhatsApp:** [+971 54 338 9168](https://wa.me/971543389168)
-- **Email:** [cabrenica12@gmail.com](mailto:cabrenica12@gmail.com)
-
 ---
 
 <sub>This repository hosts the Vexel website, installers and update files. Requires Windows 10 or 11 (64-bit). © 2026 Vexel</sub>
