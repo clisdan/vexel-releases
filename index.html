@@ -171,6 +171,29 @@
   }
   @media (max-width:520px){.hx .cta .btn{width:100%;justify-content:center}}
   @media (prefers-reduced-motion:reduce){.hx .fu,.hx .band,.hx .frame,.hx .pill i{animation:none}}
+
+  /* Closing section v2 (Stripe-inspired) */
+  .gx{padding:96px 0;background:#fff;font-family:Inter,"Segoe UI Variable","Segoe UI",system-ui,sans-serif}
+  .gx .final{position:relative;overflow:hidden;border-radius:28px;background:#101828;padding:80px 40px 150px;text-align:center;color:#fff}
+  .gx .final::after{content:"";position:absolute;left:-10%;right:-10%;bottom:-150px;height:240px;transform:skewY(-6deg);background:linear-gradient(110deg,#12b76a,#6ce9a6 45%,#a4bcfd);opacity:.85;pointer-events:none}
+  .gx .final>*{position:relative;z-index:1}
+  .gx .final h2{color:#fff;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-.04em;max-width:680px;margin:0 auto}
+  .gx .final .lead2{font-size:18px;color:#d0d5dd;margin:16px auto 0;max-width:520px}
+  .gx .final .btn.primary{margin-top:28px;border-radius:999px;min-height:54px;padding:0 32px;box-shadow:0 10px 24px -10px rgba(18,183,106,.8);transition:transform .18s ease,background .18s ease}
+  .gx .final .btn.primary:hover{transform:translateY(-1px)}
+  .gx .final .note2{margin:16px 0 0;font-size:15px;font-weight:500;color:#ffffff}
+  .gx .final .note2 span{opacity:.5;margin:0 6px}
+  .gx .final .note2 b{font-weight:500;white-space:nowrap}
+  .gx .webreq{max-width:760px;margin:22px auto 0;text-align:center;font-size:14px;color:var(--muted)}
+  .gx .win{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;margin-top:36px;padding:28px 32px;border-radius:20px;background:#f6f7f6;border:1px solid var(--line)}
+  .gx .win .wi{width:48px;height:48px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none}
+  .gx .win .t{flex:1 1 340px}
+  .gx .win h3{margin:0;font-size:20px;letter-spacing:-.02em}
+  .gx .win p{margin:4px 0 0;color:var(--muted);font-size:15px}
+  .gx .win .small{font-size:13.5px;margin-top:8px}
+  .gx .btn.dark{background:#101828;color:#fff;border-radius:999px;min-height:48px;padding:0 24px}
+  .gx .btn.dark:hover{background:#1d2939}
+  @media (max-width:900px){.gx{padding:64px 0}.gx .final{padding:56px 22px 130px}.gx .win{padding:24px}.gx .win .btn{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -361,26 +384,24 @@
     </div>
   </section>
 
-  <section id="get" class="alt">
-    <div class="wrap center">
-      <h2>Try Vexel at your next session</h2>
-      <p class="sub">Vexel is free while in beta. Open it in your browser and run your night.</p>
-      <div class="cta" style="justify-content:center">
-        <a class="btn primary" href="app/" data-goatcounter-click="try-free-bottom" data-goatcounter-title="Try for free (bottom)">Try for free</a>
+  <section id="get" class="gx">
+    <div class="wrap">
+      <div class="final">
+        <h2>Try Vexel at your next session.</h2>
+        <p class="lead2">Vexel is free while in beta. Open it in your browser and run your night.</p>
+        <a class="btn primary" href="app/" data-goatcounter-click="try-free-bottom" data-goatcounter-title="Try for free (bottom)">Try for free &rarr;</a>
+        <p class="note2"><b>No account</b><span>·</span><b>No credit card</b><span>·</span><b>Full experience</b></p>
       </div>
-      <p class="note">No account · No credit card · Full experience</p>
-      <p class="req"><b>Vexel Web:</b> any modern browser on a Mac, iPad, iPhone, Android phone or tablet, Chromebook or PC. <b>Open it once with internet and it keeps working even if the Wi-Fi or internet gets cut.</b> For the best experience, add it to your Dock or home screen (Safari: Share → Add to Dock / Add to Home Screen; Chrome: Install app). Your sessions stay in that browser on that device, so download a backup from Settings now and then.</p>
+      <p class="webreq"><b>Vexel Web</b> works in any modern browser on a Mac, iPad, iPhone, Android, Chromebook or PC. <b>Open it once with internet and it keeps working even if the Wi-Fi or internet gets cut.</b> For the best experience, add it to your Dock or home screen (Safari: Share → Add to Dock / Add to Home Screen; Chrome: Install app). Your sessions stay in that browser on that device, so download a backup from Settings now and then.</p>
 
-      <div class="panel" style="margin-top:48px;text-align:left;display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px">
-        <div style="flex:1 1 320px">
+      <div class="win">
+        <div class="wi"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><rect x="2" y="3" width="8" height="7.5" fill="#101828"/><rect x="11.5" y="3" width="8.5" height="7.5" fill="#101828"/><rect x="2" y="12" width="8" height="7" fill="#101828"/><rect x="11.5" y="12" width="8.5" height="7" fill="#101828"/></svg></div>
+        <div class="t">
           <h3>Vexel for Windows</h3>
-          <p style="margin:0;color:var(--muted)">Want the full offline experience on Windows? Install the Windows app. It runs entirely on your laptop with no internet needed. Windows 10 or 11 (64-bit). Updates install automatically when you're online.</p>
-          <p class="req" style="margin-top:10px">If Windows shows "Windows protected your PC", click <b>More info → Run anyway</b>.</p>
+          <p>Want the full offline experience on Windows? Install the app. It runs entirely on your laptop with no internet needed. Windows 10 or 11 (64-bit), updates install automatically when you're online.</p>
+          <p class="small">If Windows shows "Windows protected your PC", click <b>More info → Run anyway</b>.</p>
         </div>
-        <a class="btn ghost" href="https://github.com/clisdan/vexel-releases/releases/latest" data-goatcounter-click="download-windows" data-goatcounter-title="Download for Windows">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-          Download for Windows
-        </a>
+        <a class="btn dark" href="https://github.com/clisdan/vexel-releases/releases/latest" data-goatcounter-click="download-windows" data-goatcounter-title="Download for Windows">Download for Windows</a>
       </div>
     </div>
   </section>
