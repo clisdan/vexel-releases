@@ -53,6 +53,13 @@
   .problem { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .problem div { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; color: var(--muted); }
   .problem b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .tag.bad { background: #fff1ee; color: #b42318; }
+  .tag.good { background: var(--green-soft); color: var(--green-dark); }
+  .problem div.bad { background: #fffaf9; border-color: #f6d4cf; }
+  .problem .fix { display: block; margin-top: 14px; padding-top: 14px; border-top: 1px dashed #f0c9c3; color: var(--green-dark); font-weight: 600; font-size: 15.5px; }
+  .problem .fix::before { content: "✓ "; }
+  .kicker { display: block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #b42318; margin-bottom: 10px; }
 
   .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
@@ -143,12 +150,13 @@
 
   <section class="alt">
     <div class="wrap">
+      <span class="kicker">The problem</span>
       <h2>Open play is fun. Running it isn't.</h2>
       <p class="sub">Paper lists and paddle stacks work until the gym gets busy.</p>
       <div class="problem">
-        <div><b>"Who's next?"</b>Someone has to keep track, and the host ends up refereeing the queue instead of playing.</div>
-        <div><b>Uneven games</b>Regulars quietly get more games, newcomers wait longer, and late arrivals throw the list off.</div>
-        <div><b>Lopsided matches</b>Strong players stack teams, and the same partners keep ending up together.</div>
+        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>"Who's next?"</b>Someone has to keep track, and the host ends up refereeing the queue instead of playing.<span class="fix">Vexel decides, and everyone can see why.</span></div>
+        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>Uneven games</b>Regulars quietly get more games, newcomers wait longer, and late arrivals throw the list off.<span class="fix">Equal games and fair waits for everyone.</span></div>
+        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>Lopsided matches</b>Strong players stack teams, and the same partners keep ending up together.<span class="fix">Balanced teams and new partners every game.</span></div>
       </div>
     </div>
   </section>
