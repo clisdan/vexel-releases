@@ -1,0 +1,1 @@
+var e=()=>{throw Error(`Not available in Vexel Web`)},t=e,n=e,r=e,i=e,a=e,o={},s=e;export{i as check,o as default,r as emit,s as getCurrentWindow,t as invoke,n as listen,a as relaunch};

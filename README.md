@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://github.com/clisdan/vexel-releases/releases/latest"><img src="https://img.shields.io/github/v/release/clisdan/vexel-releases?label=Download&style=for-the-badge&color=2ea043" alt="Download"></a>
   <a href="https://clisdan.github.io/vexel-releases/"><img src="https://img.shields.io/badge/Website-visit-0969da?style=for-the-badge" alt="Website"></a>
+  <a href="https://clisdan.github.io/vexel-releases/app/"><img src="https://img.shields.io/badge/Vexel_Web-open-555?style=for-the-badge" alt="Open Vexel Web"></a>
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-555?style=for-the-badge" alt="Windows 10 and 11">
   <img src="https://img.shields.io/badge/Works-offline-555?style=for-the-badge" alt="Works offline">
   <img src="https://img.shields.io/badge/Free-beta-b54708?style=for-the-badge" alt="Free beta">
@@ -76,6 +77,10 @@ Vexel decides who plays next, so everyone gets **equal games, fair waits and bal
 </table>
 
 ## Get started
+
+**On a Mac, iPad, Android or Chromebook:** open [Vexel Web](https://clisdan.github.io/vexel-releases/app/) once with internet. It keeps working offline; add it to your Dock or home screen.
+
+**On Windows:**
 
 1. **Download** `Vexel_<version>_x64-offline-setup.exe` from the [latest release](https://github.com/clisdan/vexel-releases/releases/latest).
 2. **Install.** No admin rights and no internet needed. You can copy the installer to a USB stick.

@@ -1,0 +1,3 @@
+import{t as e}from"./zip-DpVAJ4Nf.js";var t=/^[=+\-@\t\r]/,n=e=>{if(e===null)return``;let n=typeof e==`number`?String(e):t.test(e)?`'${e}`:e;return/[",\r\n]/.test(n)||/^\s|\s$/.test(n)?`"${n.replace(/"/g,`""`)}"`:n};function r(e){return`﻿`+(e.kind===`text`?[e.title,``,...e.lines.map(e=>e.text)].map(e=>n(e)):[e.columns.map(e=>n(e.header)).join(`,`),...e.rows.map(t=>e.columns.map((e,r)=>n(t[r]??null)).join(`,`))]).join(`\r
+`)+`\r
+`}function i(t,n=new Date){return e(t.sheets.map((e,t)=>({name:`${t+1} - ${e.name.replace(/[\\/:*?"<>|]/g,` `)}.csv`,data:r(e)})),n)}export{r as sheetToCsv,i as writeCsvZip};
