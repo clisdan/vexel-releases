@@ -59,6 +59,19 @@
   .problem div.bad { background: #fffaf9; border-color: #f6d4cf; }
   .problem .fix { display: block; margin-top: 14px; padding-top: 14px; border-top: 1px dashed #f0c9c3; color: var(--green-dark); font-weight: 600; font-size: 15.5px; }
   .problem .fix::before { content: "✓ "; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
+  .cmp { border-radius: 16px; padding: 26px; border: 1px solid var(--line); background: #fff; }
+  .cmp.bad { background: #fffaf9; border-color: #f6d4cf; }
+  .cmp.good { background: #f3fcf7; border-color: #bfe9d2; }
+  .cmp h3 { margin: 0 0 14px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+  .cmp.bad h3 { color: #b42318; }
+  .cmp.good h3 { color: var(--green-dark); }
+  .cmp ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+  .cmp li { position: relative; padding-left: 30px; color: var(--muted); font-size: 16px; }
+  .cmp li b { display: block; color: var(--ink); font-size: 17px; margin-bottom: 2px; }
+  .cmp li::before { position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; }
+  .cmp.bad li::before { content: "✕"; background: #fde4df; color: #b42318; }
+  .cmp.good li::before { content: "✓"; background: #d1f0e0; color: var(--green-dark); }
   .kicker { display: block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #b42318; margin-bottom: 10px; }
 
   .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -110,7 +123,7 @@
 
   @media (max-width: 860px) {
     nav.links a:not(.btn) { display: none; }
-    .problem, .features, .steps, .get { grid-template-columns: 1fr; }
+    .problem, .features, .steps, .get, .compare { grid-template-columns: 1fr; }
     .row, .row.flip { grid-template-columns: 1fr; gap: 20px; }
     .opt-grid { grid-template-columns: 1fr; }
     .row.flip .media { order: 0; }
@@ -153,10 +166,23 @@
       <span class="kicker">The problem</span>
       <h2>Open play is fun. Running it isn't.</h2>
       <p class="sub">Paper lists and paddle stacks work until the gym gets busy.</p>
-      <div class="problem">
-        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>"Who's next?"</b>Someone has to keep track, and the host ends up refereeing the queue instead of playing.<span class="fix">Vexel decides, and everyone can see why.</span></div>
-        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>Uneven games</b>Regulars quietly get more games, newcomers wait longer, and late arrivals throw the list off.<span class="fix">Equal games and fair waits for everyone.</span></div>
-        <div class="bad"><span class="tag bad">✕ Without Vexel</span><b>Lopsided matches</b>Strong players stack teams, and the same partners keep ending up together.<span class="fix">Balanced teams and new partners every game.</span></div>
+      <div class="compare">
+        <div class="cmp bad">
+          <h3>Without Vexel</h3>
+          <ul>
+            <li><b>"Who's next?"</b>Someone has to keep track, and the host ends up refereeing the queue instead of playing.</li>
+            <li><b>Uneven games</b>Regulars quietly get more games, newcomers wait longer, and late arrivals throw the list off.</li>
+            <li><b>Lopsided matches</b>Strong players stack teams, and the same partners keep ending up together.</li>
+          </ul>
+        </div>
+        <div class="cmp good">
+          <h3>With Vexel</h3>
+          <ul>
+            <li><b>Vexel decides who's next</b>Everyone can see the order and why, so the host gets to play.</li>
+            <li><b>Equal games, fair waits</b>Whoever is furthest behind plays next, and late arrivals get their fair share.</li>
+            <li><b>Balanced teams, new partners</b>Skill levels keep matches close, and teammates are mixed every game.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
