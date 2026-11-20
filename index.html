@@ -9,6 +9,8 @@
 <meta property="og:description" content="Equal games, fair waits and balanced teams for open play and club nights. Try it free in your browser.">
 <meta property="og:image" content="img/board.webp">
 <link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <style>
   :root {
     --bg: #ffffff; --soft: #f5f7f6; --line: #e4e8e6; --ink: #101814; --muted: #5b6661;
@@ -130,6 +132,45 @@
     section { padding: 60px 0; }
     .hero { padding-top: 48px; }
   }
+
+  /* Hero v2 (Stripe-inspired) */
+  .hx{position:relative;overflow:hidden;padding:72px 0 0;font-family:Inter,"Segoe UI Variable","Segoe UI",system-ui,sans-serif;background:#fff}
+  .hx .band{position:absolute;left:42%;top:-300px;width:95%;height:820px;transform:skewY(-12deg);transform-origin:top left;background:linear-gradient(110deg,#12b76a 0%,#6ce9a6 30%,#d1fadf 55%,#a4bcfd 82%,#e0eaff 100%);opacity:.9;animation:hxdrift 16s ease-in-out infinite;pointer-events:none}
+  .hx-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+  .hx .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid #cdeedd;font-size:13px;font-weight:600;color:#027a48}
+  .hx .pill i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:hxpulse 2.4s ease-out infinite}
+  .hx h1{font-size:clamp(40px,6.2vw,72px);line-height:1.02;letter-spacing:-.045em;margin:20px 0 0;max-width:none;font-weight:700}
+  .hx .lead{text-align:left;margin:18px 0 0;max-width:540px;color:#475467}
+  .hx .cta{justify-content:flex-start;margin-top:32px}
+  .hx .btn.primary{border-radius:999px;min-height:48px;padding:0 26px;box-shadow:0 10px 24px -10px rgba(18,183,106,.7);transition:transform .18s ease,background .18s ease}
+  .hx .btn.primary:hover{transform:translateY(-1px)}
+  .hx .note{margin-top:14px}
+  .hx .wifi{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 12px;border-radius:10px;background:#fff;border:1px solid var(--line);font-size:14px;color:var(--ink)}
+  .hx .wifi svg{flex:none;color:#027a48}
+  .hx .frame{border-radius:16px;border:1px solid #cfd4d1;background:#fff;overflow:hidden;box-shadow:0 50px 100px -30px rgba(16,24,40,.35),0 20px 40px -20px rgba(16,24,40,.25);transform:perspective(1600px) rotateY(-8deg) rotateX(3deg);animation:hxfloat 8s ease-in-out infinite}
+  .hx .frame .bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#f6f7f6;border-bottom:1px solid var(--line)}
+  .hx .frame .bar span{width:10px;height:10px;border-radius:50%;background:#d0d5dd}
+  .hx .frame .bar em{margin-left:10px;font-style:normal;font-size:12px;font-weight:600;color:#475467}
+  .hx .frame img{display:block;width:100%;height:auto}
+  .hx .built{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:14px 40px;padding:64px 0 56px;color:#344054}
+  .hx .built small{font-size:14px;color:#475467}
+  .hx .built b{font-size:22px;letter-spacing:-.03em}
+  .hx .fu{animation:hxup .8s cubic-bezier(.2,.7,.2,1) both}
+  .hx .d1{animation-delay:.08s}.hx .d2{animation-delay:.18s}.hx .d3{animation-delay:.3s}.hx .d4{animation-delay:.42s}
+  @keyframes hxup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  @keyframes hxdrift{0%,100%{transform:skewY(-12deg) translateX(0)}50%{transform:skewY(-12deg) translateX(-34px)}}
+  @keyframes hxfloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+  @keyframes hxpulse{0%{box-shadow:0 0 0 0 rgba(18,183,106,.55)}70%{box-shadow:0 0 0 8px rgba(18,183,106,0)}100%{box-shadow:0 0 0 0 rgba(18,183,106,0)}}
+  @media (max-width:900px){
+    .hx{padding-top:40px}
+    .hx-grid{grid-template-columns:1fr}
+    .hx .band{left:20%;top:-420px;opacity:.45}
+    .hx .frame{transform:none}
+    .hx .built{gap:10px 24px;padding:44px 0}
+    .hx .built b{font-size:19px}
+  }
+  @media (max-width:520px){.hx .cta .btn{width:100%;justify-content:center}}
+  @media (prefers-reduced-motion:reduce){.hx .fu,.hx .band,.hx .frame,.hx .pill i{animation:none}}
 </style>
 </head>
 <body>
@@ -147,17 +188,30 @@
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hx">
+    <div class="band" aria-hidden="true"></div>
     <div class="wrap">
-      <span class="eyebrow">For open play, club nights and casual tournaments</span>
-      <h1>Fair court rotation, without the arguments.</h1>
-      <p class="lead">Vexel decides who plays next so everyone gets equal games, fair waits and balanced teams, even when people arrive late, leave early or take a break.</p>
-      <div class="cta">
-        <a class="btn primary" href="app/" data-goatcounter-click="try-free-hero" data-goatcounter-title="Try for free (hero)">Try for free</a>
+      <div class="hx-grid">
+        <div>
+          <span class="pill fu"><i></i>For open play, club nights and casual tournaments</span>
+          <h1 class="fu d1">Fair court rotation, without the arguments.</h1>
+          <p class="lead fu d2">Vexel decides who plays next so everyone gets equal games, fair waits and balanced teams, even when people arrive late, leave early or take a break.</p>
+          <div class="cta fu d3">
+            <a class="btn primary" href="app/" data-goatcounter-click="try-free-hero" data-goatcounter-title="Try for free (hero)">Try for free &rarr;</a>
+          </div>
+          <p class="note fu d3">No account · No credit card · Full experience</p>
+          <div class="wifi fu d4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5.5 12a10 10 0 0 1 13 0"/><path d="M9 15.5a5 5 0 0 1 6 0"/><circle cx="12" cy="19" r="1"/></svg><span><b>Works even if the Wi-Fi drops.</b> Once loaded, it keeps running.</span></div>
+        </div>
+        <div class="fu d2">
+          <div class="frame">
+            <div class="bar"><span></span><span></span><span></span><em>Vexel Web</em></div>
+            <img src="img/board.webp" width="1600" height="1000" alt="Vexel live board: three courts in play with balanced teams and an Up next list">
+          </div>
+        </div>
       </div>
-      <p class="note">No account · No credit card · Full experience</p>
-      <p class="note" style="margin-top:6px"><b>Works even if the Wi-Fi drops.</b> Once Vexel has loaded, it keeps running with no internet.</p>
-      <div class="shot"><img src="img/board.webp" width="1600" height="1000" alt="Vexel live board: three courts in play with balanced teams and an Up next list"></div>
+      <div class="built">
+        <small>Built for</small><b>Pickleball</b><b>Badminton</b><b>Padel</b><b>Tennis</b><small>and any singles or doubles court sport</small>
+      </div>
     </div>
   </section>
 
