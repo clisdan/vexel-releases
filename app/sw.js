@@ -1,7 +1,7 @@
 /* Vexel Web service worker: keeps the whole app in the browser so it opens and runs with no internet.
    Generated at build time: the cache name and file list below are filled in by vite.config.ts. */
-const CACHE = 'vexel-web-0.3.0-94ab5f49f0';
-const ASSETS = ["./","./index.html","./apple-touch-icon.png","./assets/EULA-DTW5hzKd.js","./assets/NOTICES-WEB-BS_VjAdl.js","./assets/csv-DuRIujWx.js","./assets/index-C69xWw-8.js","./assets/index-DMLUQOdm.css","./assets/print-C_euKmAO.js","./assets/report-CjW_3ww1.js","./assets/tauri-stub-ChMuCyMX.js","./assets/xlsx-CvmReTta.js","./assets/zip-DpVAJ4Nf.js","./icon-192.png","./icon-512.png","./icon-maskable-512.png","./manifest.webmanifest"];
+const CACHE = 'vexel-web-0.3.1-6598b1eb6f';
+const ASSETS = ["./","./index.html","./apple-touch-icon.png","./assets/EULA-DTW5hzKd.js","./assets/Highlights-GPMUflkD.js","./assets/NOTICES-WEB-BS_VjAdl.js","./assets/csv-DuRIujWx.js","./assets/index-CajpcVfB.js","./assets/index-DjwZWHKk.css","./assets/print-C_euKmAO.js","./assets/report-Rxtl_Hfi.js","./assets/tauri-stub-ChMuCyMX.js","./assets/worker-CXVMSG3v.js","./assets/xlsx-CvmReTta.js","./assets/zip-DpVAJ4Nf.js","./icon-192.png","./icon-512.png","./icon-maskable-512.png","./manifest.webmanifest"];
 
 self.addEventListener('install', (event) => {
   // Download every file of this version before it can take over.
